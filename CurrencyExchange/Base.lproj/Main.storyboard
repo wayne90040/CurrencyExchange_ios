@@ -39,17 +39,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="p6z-mL-Gu5">
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="9eJ-T9-k4m">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="9hN-Ui-iCy">
-                                <rect key="frame" x="16" y="7" width="83" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                            </button>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="p6z-mL-Gu5"/>
                     <connections>
                         <outlet property="mainTableView" destination="bKk-MU-6Ms" id="yot-hD-JmO"/>
+                        <outlet property="mainView" destination="8bC-Xf-vdC" id="0MQ-Mc-aqB"/>
+                        <outlet property="tableViewBottom" destination="0fH-Ch-jxk" id="zNa-B6-Byf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

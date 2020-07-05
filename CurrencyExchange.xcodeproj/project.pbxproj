@@ -26,7 +26,15 @@
 		2D5572372438626600110747 /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5572362438626600110747 /* MainPresenter.swift */; };
 		2D557239243862BB00110747 /* JSONBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D557238243862BB00110747 /* JSONBuilder.swift */; };
 		2D55723B243C1ECF00110747 /* CurModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D55723A243C1ECF00110747 /* CurModel.swift */; };
+		2D6FA9EB24626A9700978D18 /* KeyBoardUIView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D6FA9EA24626A9700978D18 /* KeyBoardUIView.xib */; };
+		2D6FA9ED2462ADA400978D18 /* KeyBoardUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6FA9EC2462ADA400978D18 /* KeyBoardUIView.swift */; };
 		2D7CF70B24607F4F00A57F3E /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 2D7CF70A24607F4F00A57F3E /* .gitignore */; };
+		2DD093BC24B0CD810078C0BD /* usa.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DD093BB24B0CD810078C0BD /* usa.png */; };
+		2DD093BE24B0CEE20078C0BD /* japan.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DD093BD24B0CEE20078C0BD /* japan.png */; };
+		2DD093C024B0CF2E0078C0BD /* taiwan.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2DD093BF24B0CF2E0078C0BD /* taiwan.jpg */; };
+		2DD093C224B0D0F60078C0BD /* GBP.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DD093C124B0D0F60078C0BD /* GBP.png */; };
+		2DD093C424B0D1240078C0BD /* canada.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DD093C324B0D1240078C0BD /* canada.png */; };
+		2DD093C624B1627F0078C0BD /* aud.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DD093C524B1627F0078C0BD /* aud.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,7 +80,15 @@
 		2D5572362438626600110747 /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
 		2D557238243862BB00110747 /* JSONBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONBuilder.swift; sourceTree = "<group>"; };
 		2D55723A243C1ECF00110747 /* CurModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurModel.swift; sourceTree = "<group>"; };
+		2D6FA9EA24626A9700978D18 /* KeyBoardUIView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KeyBoardUIView.xib; sourceTree = "<group>"; };
+		2D6FA9EC2462ADA400978D18 /* KeyBoardUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyBoardUIView.swift; sourceTree = "<group>"; };
 		2D7CF70A24607F4F00A57F3E /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		2DD093BB24B0CD810078C0BD /* usa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = usa.png; sourceTree = "<group>"; };
+		2DD093BD24B0CEE20078C0BD /* japan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = japan.png; sourceTree = "<group>"; };
+		2DD093BF24B0CF2E0078C0BD /* taiwan.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = taiwan.jpg; sourceTree = "<group>"; };
+		2DD093C124B0D0F60078C0BD /* GBP.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GBP.png; sourceTree = "<group>"; };
+		2DD093C324B0D1240078C0BD /* canada.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = canada.png; sourceTree = "<group>"; };
+		2DD093C524B1627F0078C0BD /* aud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = aud.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,16 +140,16 @@
 		2D5571EC2438557700110747 /* CurrencyExchange */ = {
 			isa = PBXGroup;
 			children = (
-				2D5572312438619100110747 /* other */,
+				2DD093B724B0C9FC0078C0BD /* StoryBoard */,
 				2D5571ED2438557700110747 /* AppDelegate.swift */,
+				2D5571F62438557A00110747 /* Assets.xcassets */,
+				2D5571FB2438557A00110747 /* Info.plist */,
+				2D6FA9EC2462ADA400978D18 /* KeyBoardUIView.swift */,
+				2D55721D243859DB00110747 /* MainTableViewCell.swift */,
+				2DD093B324B0C20B0078C0BD /* Model */,
+				2DD093B624B0C9CF0078C0BD /* Others */,
 				2D5571EF2438557700110747 /* SceneDelegate.swift */,
 				2D5571F12438557700110747 /* ViewController.swift */,
-				2D5571F32438557700110747 /* Main.storyboard */,
-				2D5571F62438557A00110747 /* Assets.xcassets */,
-				2D5571F82438557A00110747 /* LaunchScreen.storyboard */,
-				2D5571FB2438557A00110747 /* Info.plist */,
-				2D55721D243859DB00110747 /* MainTableViewCell.swift */,
-				2D55721E243859DB00110747 /* MainTableViewCell.xib */,
 			);
 			path = CurrencyExchange;
 			sourceTree = "<group>";
@@ -156,20 +172,68 @@
 			path = CurrencyExchangeUITests;
 			sourceTree = "<group>";
 		};
-		2D5572312438619100110747 /* other */ = {
+		2DD093B324B0C20B0078C0BD /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				2D55722124385CB300110747 /* ViewControllerBaseDelegate.swift */,
-				2D55722B243860D300110747 /* BasePresenter.swift */,
-				2D55722D2438613100110747 /* UrlSessionDelegate.swift */,
-				2D55722F2438615800110747 /* UrlSession.swift */,
-				2D5572322438620400110747 /* LoadActivity.swift */,
-				2D5572342438623000110747 /* ServerContentURL.swift */,
-				2D5572362438626600110747 /* MainPresenter.swift */,
-				2D557238243862BB00110747 /* JSONBuilder.swift */,
 				2D55723A243C1ECF00110747 /* CurModel.swift */,
 			);
-			name = other;
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2DD093B624B0C9CF0078C0BD /* Others */ = {
+			isa = PBXGroup;
+			children = (
+				2DD093BA24B0CD580078C0BD /* icons */,
+				2D55722B243860D300110747 /* BasePresenter.swift */,
+				2D557238243862BB00110747 /* JSONBuilder.swift */,
+				2D5572322438620400110747 /* LoadActivity.swift */,
+				2D5572362438626600110747 /* MainPresenter.swift */,
+				2D5572342438623000110747 /* ServerContentURL.swift */,
+				2D55722F2438615800110747 /* UrlSession.swift */,
+				2D55722D2438613100110747 /* UrlSessionDelegate.swift */,
+				2D55722124385CB300110747 /* ViewControllerBaseDelegate.swift */,
+			);
+			name = Others;
+			sourceTree = "<group>";
+		};
+		2DD093B724B0C9FC0078C0BD /* StoryBoard */ = {
+			isa = PBXGroup;
+			children = (
+				2DD093B924B0CC840078C0BD /* UIView */,
+				2DD093B824B0CA120078C0BD /* xib */,
+				2D5571F32438557700110747 /* Main.storyboard */,
+				2D5571F82438557A00110747 /* LaunchScreen.storyboard */,
+			);
+			name = StoryBoard;
+			sourceTree = "<group>";
+		};
+		2DD093B824B0CA120078C0BD /* xib */ = {
+			isa = PBXGroup;
+			children = (
+				2D55721E243859DB00110747 /* MainTableViewCell.xib */,
+			);
+			path = xib;
+			sourceTree = "<group>";
+		};
+		2DD093B924B0CC840078C0BD /* UIView */ = {
+			isa = PBXGroup;
+			children = (
+				2D6FA9EA24626A9700978D18 /* KeyBoardUIView.xib */,
+			);
+			name = UIView;
+			sourceTree = "<group>";
+		};
+		2DD093BA24B0CD580078C0BD /* icons */ = {
+			isa = PBXGroup;
+			children = (
+				2DD093C524B1627F0078C0BD /* aud.png */,
+				2DD093C324B0D1240078C0BD /* canada.png */,
+				2DD093C124B0D0F60078C0BD /* GBP.png */,
+				2DD093BF24B0CF2E0078C0BD /* taiwan.jpg */,
+				2DD093BB24B0CD810078C0BD /* usa.png */,
+				2DD093BD24B0CEE20078C0BD /* japan.png */,
+			);
+			path = icons;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -276,10 +340,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2DD093C624B1627F0078C0BD /* aud.png in Resources */,
+				2DD093C424B0D1240078C0BD /* canada.png in Resources */,
 				2D7CF70B24607F4F00A57F3E /* .gitignore in Resources */,
 				2D5571FA2438557A00110747 /* LaunchScreen.storyboard in Resources */,
+				2DD093BC24B0CD810078C0BD /* usa.png in Resources */,
+				2DD093C024B0CF2E0078C0BD /* taiwan.jpg in Resources */,
 				2D5571F72438557A00110747 /* Assets.xcassets in Resources */,
+				2DD093C224B0D0F60078C0BD /* GBP.png in Resources */,
+				2D6FA9EB24626A9700978D18 /* KeyBoardUIView.xib in Resources */,
 				2D557220243859DB00110747 /* MainTableViewCell.xib in Resources */,
+				2DD093BE24B0CEE20078C0BD /* japan.png in Resources */,
 				2D5571F52438557700110747 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -312,6 +383,7 @@
 				2D5572302438615800110747 /* UrlSession.swift in Sources */,
 				2D5572352438623000110747 /* ServerContentURL.swift in Sources */,
 				2D5571F22438557700110747 /* ViewController.swift in Sources */,
+				2D6FA9ED2462ADA400978D18 /* KeyBoardUIView.swift in Sources */,
 				2D5571EE2438557700110747 /* AppDelegate.swift in Sources */,
 				2D55721F243859DB00110747 /* MainTableViewCell.swift in Sources */,
 				2D55722E2438613100110747 /* UrlSessionDelegate.swift in Sources */,

@@ -8,20 +8,26 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+protocol KeyBoardDelegate {
+    func reloadExchange(exchange: Double)
+}
+
+class ViewController: UIViewController{
     var mainpresenter: MainPresenter?
     var curcodable: CurCodable?
     var loadactivity = LoadActivity()
-    var editIndex = Int()
-    
+    var editIndex = Int(), exchange = Double()
+    let keyBoardView = KeyBoardUIView()
     @IBOutlet weak var mainTableView: UITableView!
+    @IBOutlet var mainView: UIView!
+    @IBOutlet weak var tableViewBottom: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadactivity.showActivityIndicator(self.view)
         // Do any additional setup after loading the view.
         mainpresenter = MainPresenter(delegate: self)
         mainpresenter?.getCur()
-        loadactivity.showActivityIndicator(self.view)
         
         let nib = UINib(nibName: "MainTableViewCell", bundle: nil)
         mainTableView.register(nib, forCellReuseIdentifier: "Cell")
@@ -30,21 +36,82 @@ class ViewController: UIViewController {
         mainTableView.rowHeight = 100
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
+    func setKeyBoard(){
+//        guard let window = UIApplication.shared.keyWindow else { return }
+        keyBoardView.translatesAutoresizingMaskIntoConstraints = false
+       
+        let top = NSLayoutConstraint(item: keyBoardView,  attribute: .bottom, relatedBy: .equal,  toItem: mainView, attribute: .bottom,  multiplier: 1.0, constant: 0)
+        let height = NSLayoutConstraint(item: keyBoardView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 320.0)
+        let left = NSLayoutConstraint(item: keyBoardView, attribute: .leading, relatedBy: .equal, toItem: mainView, attribute: .leading, multiplier: 1.0, constant: 0)
+        let right = NSLayoutConstraint(item: keyBoardView, attribute: .trailing, relatedBy: .equal, toItem: mainView, attribute: .trailing, multiplier: 1.0, constant: 0)
+        
+        keyBoardView.hideKeyButton.addTarget(self, action: #selector(hideKeyBoard), for: .touchUpInside)
+        keyBoardView.delegate = self
+        keyBoardView.floatBool = false // Init KeyBoard
+        keyBoardView.tmpExchange = 0
+        keyBoardView.tmpFloat = 0
+        
+//        window.addSubview(keyBoardView)
+        mainView.addSubview(keyBoardView)
+        mainView.addConstraint(top)
+        mainView.addConstraint(height)
+        mainView.addConstraint(left)
+        mainView.addConstraint(right)
+    }
+    
+    @objc func hideKeyBoard(){
+        for view in mainView.subviews{
+            if view == keyBoardView{
+//                tableViewBottom.constant = CGFloat(0.0)
+                mainTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+                
+                view.removeFromSuperview()
+                break
+            }
+        }
+    }
 }
 
-extension ViewController: ViewControllerBaseDelegate, UITableViewDelegate, UITableViewDataSource, MainTableViewCellDelegate{
-    
-    func getCellIndex(_ sender: MainTableViewCell) {
-        guard let index = mainTableView.indexPath(for: sender) else {return}
-        editIndex = index.row
+extension ViewController: ViewControllerBaseDelegate, UITableViewDelegate, UITableViewDataSource, KeyBoardDelegate{
+   
+    func reloadExchange(exchange: Double) {
+        let countries = (curcodable?.getAllCountry())
+        let editcountry = curcodable?.getAllCountry()[editIndex]
+
+        editcountry?.setnowExchange(exchange: exchange, exrate: editcountry?.Exrate ?? 0, USD: false)
+        
+        if editcountry!.country == "USD"{ // USD
+            for country in countries!{
+                if country.country != "USD"{
+                    country.setnowExchange(exchange: exchange, exrate: country.Exrate, USD: true)
+                }
+            }
+           mainTableView.reloadData()
+            
+        }else{
+            for country in countries!{
+                if country.country != editcountry?.country && country.country != "USD" {
+                    country.setnowExchange(exchange: exchange, exrate: editcountry?.Exrate ?? 0, USD: false)
+                }else if country.country == "USD"{
+                    country.setnowExchange(exchange: exchange, exrate: editcountry?.Exrate ?? 0, USD: false)
+                }else{
+                    
+                }
+            }
+            mainTableView.reloadData()
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return curcodable?.getAllCountry().count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -53,91 +120,46 @@ extension ViewController: ViewControllerBaseDelegate, UITableViewDelegate, UITab
         var exchange = Double()
         
         if country?.exchange != nil{
-            exchange = country?.getExchange().rounding(toDecimal: 2) ?? 00
+            exchange = country?.getExchange().rounding(toDecimal: 5) ?? 00
             let intExchange = Double(Int(exchange))
             
             if exchange - intExchange == 0 {
-                cell.exchangeTxt.text = Int(exchange).description
+                cell.exchangeLbl.text = Int(exchange).description
             }else{
-                cell.exchangeTxt.text = exchange.description
+                cell.exchangeLbl.text = exchange.description
             }
-            
-//            cell.exchangeTxt.placeholder = exchange.description
         }else{
-            exchange = country?.Exrate.rounding(toDecimal: 2) ?? 00
-            cell.exchangeTxt.placeholder = exchange.description
-       
+            exchange = country?.Exrate.rounding(toDecimal: 5) ?? 00
+            cell.exchangeLbl.text = exchange.description
         }
-        
-        cell.delegate = self
+    
         cell.countryLbl.text = country?.country ?? " "
-//        cell.exchangeTxt.keyboardType = .numberPad
-        cell.exchangeTxt.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
-        
+        cell.countryImg.image = UIImage(named: country?.imageString ?? "")
+
         return cell
     }
     
-    
-    @objc func textFieldDidChange(_ textField: UITextField) {
-        let countries = (curcodable?.getAllCountry())!
-        let editcountry = curcodable?.getAllCountry()[editIndex]
-        var exchange: Double?
-        
-        if Double(textField.text!) != nil{
-            exchange = Double(textField.text!)!
-        }else{
-            let alert = UIAlertController(title: "請輸入數值", message: "請輸入數值", preferredStyle: .alert)
-            let confirm = UIAlertAction(title: "確定", style: .default, handler: nil)
-            alert.addAction(confirm)
-            exchange = 0
-            present(alert, animated: true, completion: nil)
-        }
-        editcountry?.setnowExchange(exchange: exchange!, exrate: editcountry!.Exrate, USD: false)
-        
-        if editcountry?.country == "USD"{ // USD
-            for country in countries{
-                if country.country != "USD"{
-                    country.setnowExchange(exchange: exchange!, exrate: country.Exrate, USD: true)
-                }
-            }
-           mainTableView.reloadData()
-            
-        }else{
-            for country in countries{
-                if country.country != editcountry?.country && country.country != "USD" {
-                    country.setnowExchange(exchange: exchange!, exrate: editcountry!.Exrate, USD: false)
-                }else if country.country == "USD"{
-                    country.setnowExchange(exchange: exchange!, exrate: editcountry!.Exrate, USD: false)
-                }else{
-                    
-                }
-            }
-            mainTableView.reloadData()
-        }
-        
-    }
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        editIndex = indexPath.row
+        setKeyBoard() //
+        mainTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 320, right: 0) // keyboard size
+        mainTableView.scrollToRow(at: indexPath, at: .middle, animated: true) // scroll to cell
     }
     
     func PresenterCallBack(datadic: NSDictionary, success: Bool, type: String) {
         do{
             let jsonData = try JSONSerialization.data(withJSONObject: datadic, options: .prettyPrinted)
             self.curcodable = try JSONDecoder().decode(CurCodable.self, from: jsonData)
-            
+            print(datadic)
+           
             DispatchQueue.main.sync {
                 mainTableView.reloadData()
                 self.loadactivity.hideActivityIndicator(self.view)
             }
-        }catch{
-            print("Error")
-        }
+        }catch{}
     }
     
-    func PresenterCallBackError(error: NSError, type: String) {
-        
-    }
+    func PresenterCallBackError(error: NSError, type: String) {}
 }
 
  // 四捨五入至 小數第x位
