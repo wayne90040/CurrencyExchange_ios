@@ -18,6 +18,8 @@ class ViewController: UIViewController{
     var loadactivity = LoadActivity()
     var editIndex = Int(), exchange = Double()
     let keyBoardView = KeyBoardUIView()
+    let userdefault = UserDefaults(suiteName: "group.WeiLun.CurrencyExchange")
+    
     @IBOutlet weak var mainTableView: UITableView!
     @IBOutlet var mainView: UIView!
     @IBOutlet weak var tableViewBottom: NSLayoutConstraint!
@@ -30,6 +32,7 @@ class ViewController: UIViewController{
         mainpresenter?.getCur()
         
         let nib = UINib(nibName: "MainTableViewCell", bundle: nil)
+        
         mainTableView.register(nib, forCellReuseIdentifier: "Cell")
         mainTableView.delegate = self
         mainTableView.dataSource = self
@@ -70,18 +73,35 @@ class ViewController: UIViewController{
     @objc func hideKeyBoard(){
         for view in mainView.subviews{
             if view == keyBoardView{
-//                tableViewBottom.constant = CGFloat(0.0)
                 mainTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-                
                 view.removeFromSuperview()
                 break
             }
         }
     }
+    
+    func setDefault(){
+        let countries = curcodable?.getAllCountry()
+        var countriesTmp = Array<String>()
+        var exchangeTmp = Array<Double>()
+        var pngTmp = Array<String>()
+        
+        for country in countries!{
+            countriesTmp.append(country.country!)
+            exchangeTmp.append(Double(country.getExchange()))
+            pngTmp.append(country.imageString!)
+        }
+        
+        userdefault?.set(countriesTmp, forKey: "Countries")
+        userdefault?.set(exchangeTmp, forKey: "Exchange")
+        userdefault?.set(pngTmp, forKey: "Png")
+    }
 }
 
 extension ViewController: ViewControllerBaseDelegate, UITableViewDelegate, UITableViewDataSource, KeyBoardDelegate{
-   
+
+    // MARK: - KeyBoardDelegate
+    
     func reloadExchange(exchange: Double) {
         let countries = (curcodable?.getAllCountry())
         let editcountry = curcodable?.getAllCountry()[editIndex]
@@ -94,8 +114,6 @@ extension ViewController: ViewControllerBaseDelegate, UITableViewDelegate, UITab
                     country.setnowExchange(exchange: exchange, exrate: country.Exrate, USD: true)
                 }
             }
-           mainTableView.reloadData()
-            
         }else{
             for country in countries!{
                 if country.country != editcountry?.country && country.country != "USD" {
@@ -106,9 +124,12 @@ extension ViewController: ViewControllerBaseDelegate, UITableViewDelegate, UITab
                     
                 }
             }
-            mainTableView.reloadData()
         }
+        setDefault()
+        mainTableView.reloadData()
     }
+    
+    // MARK: - TableView delegate & data source
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return curcodable?.getAllCountry().count ?? 0
@@ -145,6 +166,8 @@ extension ViewController: ViewControllerBaseDelegate, UITableViewDelegate, UITab
         mainTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 320, right: 0) // keyboard size
         mainTableView.scrollToRow(at: indexPath, at: .middle, animated: true) // scroll to cell
     }
+    
+    // MARK: - ViewControllerBaseDelegate
     
     func PresenterCallBack(datadic: NSDictionary, success: Bool, type: String) {
         do{
