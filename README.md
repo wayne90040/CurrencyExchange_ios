@@ -1,9 +1,13 @@
 ## CurrencyExchange_ios
-* 練習用
+#### 練習用，簡易換匯 App
 
-## App
-### CurModel.swift
-> 透過 func getAllCountry 增加幣別
-
-## Widget
-> 利用 UserDefaults 與 App 傳遞資料
+<details>
+  <summary> 簡介 </summary>
+  
+   - 陽春版的換匯 App
+   
+   - CurModel.swift 
+      - 可透過 getAllCountry 擴充其他國家幣別
+   
+   
+</details>
