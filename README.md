@@ -11,3 +11,7 @@
    
    
 </details>
+
+<p>
+  <img src="https://github.com/wayne90040/CurrencyExchange_ios/blob/master/CurrencyExchange.gif" width='20%' height='20%'/>
+</p>
