@@ -71,7 +71,7 @@ class KeyBoardUIView: UIView {
     
             exchange = Double(tmpExchange) + Double(tmpFloat) / Double(NSDecimalNumber(decimal: pow(10, len)))
         }
-//        print(exchange)
+
         delegate.reloadExchange(exchange: exchange)
     }
     
@@ -99,13 +99,5 @@ class KeyBoardUIView: UIView {
         xibView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
         xibView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
     }
-    
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
     
 }

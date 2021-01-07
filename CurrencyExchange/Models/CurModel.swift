@@ -9,7 +9,6 @@
 import Foundation
 
 
-
 class CurCodable: Codable {
     var COPPERHIGHGRADE: CurDetail?
     var PALLADIUM1OZ: CurDetail?

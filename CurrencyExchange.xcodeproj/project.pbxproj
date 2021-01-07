@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D0C5A7E25A6EADF0065CB81 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0C5A7D25A6EADF0065CB81 /* Extension.swift */; };
 		2D5571EE2438557700110747 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5571ED2438557700110747 /* AppDelegate.swift */; };
 		2D5571F02438557700110747 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5571EF2438557700110747 /* SceneDelegate.swift */; };
 		2D5571F22438557700110747 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5571F12438557700110747 /* ViewController.swift */; };
@@ -88,6 +89,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2D0C5A7D25A6EADF0065CB81 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		2D5571EA2438557700110747 /* CurrencyExchange.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CurrencyExchange.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D5571ED2438557700110747 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2D5571EF2438557700110747 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -166,6 +168,63 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2D0C5A7325A6E8E40065CB81 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				2D5571F12438557700110747 /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		2D0C5A7525A6E9020065CB81 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				2D0C5A7825A6E9750065CB81 /* Presenter */,
+				2D5571EF2438557700110747 /* SceneDelegate.swift */,
+				2D5571ED2438557700110747 /* AppDelegate.swift */,
+				2D557238243862BB00110747 /* JSONBuilder.swift */,
+				2D5572322438620400110747 /* LoadActivity.swift */,
+				2D5572342438623000110747 /* ServerContentURL.swift */,
+				2D55722F2438615800110747 /* UrlSession.swift */,
+				2D55722D2438613100110747 /* UrlSessionDelegate.swift */,
+				2D55722124385CB300110747 /* ViewControllerBaseDelegate.swift */,
+				2D0C5A7D25A6EADF0065CB81 /* Extension.swift */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		2D0C5A7625A6E9290065CB81 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2D55723A243C1ECF00110747 /* CurModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		2D0C5A7725A6E9390065CB81 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				2DD093BA24B0CD580078C0BD /* icons */,
+				2D5571F62438557A00110747 /* Assets.xcassets */,
+				2D6FA9EA24626A9700978D18 /* KeyBoardUIView.xib */,
+				2D55721E243859DB00110747 /* MainTableViewCell.xib */,
+				2D55721D243859DB00110747 /* MainTableViewCell.swift */,
+				2D5571F32438557700110747 /* Main.storyboard */,
+				2D5571F82438557A00110747 /* LaunchScreen.storyboard */,
+				2D6FA9EC2462ADA400978D18 /* KeyBoardUIView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		2D0C5A7825A6E9750065CB81 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				2D5572362438626600110747 /* MainPresenter.swift */,
+				2D55722B243860D300110747 /* BasePresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
 		2D5571E12438557700110747 = {
 			isa = PBXGroup;
 			children = (
@@ -193,17 +252,12 @@
 		2D5571EC2438557700110747 /* CurrencyExchange */ = {
 			isa = PBXGroup;
 			children = (
+				2D0C5A7725A6E9390065CB81 /* Views */,
+				2D0C5A7625A6E9290065CB81 /* Models */,
+				2D0C5A7525A6E9020065CB81 /* Resource */,
+				2D0C5A7325A6E8E40065CB81 /* Controller */,
 				2DD093DD24B36A3D0078C0BD /* CurrencyExchange.entitlements */,
-				2DD093B724B0C9FC0078C0BD /* StoryBoard */,
-				2D5571ED2438557700110747 /* AppDelegate.swift */,
-				2D5571F62438557A00110747 /* Assets.xcassets */,
 				2D5571FB2438557A00110747 /* Info.plist */,
-				2D6FA9EC2462ADA400978D18 /* KeyBoardUIView.swift */,
-				2D55721D243859DB00110747 /* MainTableViewCell.swift */,
-				2DD093B324B0C20B0078C0BD /* Model */,
-				2DD093B624B0C9CF0078C0BD /* Others */,
-				2D5571EF2438557700110747 /* SceneDelegate.swift */,
-				2D5571F12438557700110747 /* ViewController.swift */,
 			);
 			path = CurrencyExchange;
 			sourceTree = "<group>";
@@ -224,57 +278,6 @@
 				2D5572112438557B00110747 /* Info.plist */,
 			);
 			path = CurrencyExchangeUITests;
-			sourceTree = "<group>";
-		};
-		2DD093B324B0C20B0078C0BD /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				2D55723A243C1ECF00110747 /* CurModel.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		2DD093B624B0C9CF0078C0BD /* Others */ = {
-			isa = PBXGroup;
-			children = (
-				2DD093BA24B0CD580078C0BD /* icons */,
-				2D55722B243860D300110747 /* BasePresenter.swift */,
-				2D557238243862BB00110747 /* JSONBuilder.swift */,
-				2D5572322438620400110747 /* LoadActivity.swift */,
-				2D5572362438626600110747 /* MainPresenter.swift */,
-				2D5572342438623000110747 /* ServerContentURL.swift */,
-				2D55722F2438615800110747 /* UrlSession.swift */,
-				2D55722D2438613100110747 /* UrlSessionDelegate.swift */,
-				2D55722124385CB300110747 /* ViewControllerBaseDelegate.swift */,
-			);
-			name = Others;
-			sourceTree = "<group>";
-		};
-		2DD093B724B0C9FC0078C0BD /* StoryBoard */ = {
-			isa = PBXGroup;
-			children = (
-				2DD093B924B0CC840078C0BD /* UIView */,
-				2DD093B824B0CA120078C0BD /* xib */,
-				2D5571F32438557700110747 /* Main.storyboard */,
-				2D5571F82438557A00110747 /* LaunchScreen.storyboard */,
-			);
-			name = StoryBoard;
-			sourceTree = "<group>";
-		};
-		2DD093B824B0CA120078C0BD /* xib */ = {
-			isa = PBXGroup;
-			children = (
-				2D55721E243859DB00110747 /* MainTableViewCell.xib */,
-			);
-			path = xib;
-			sourceTree = "<group>";
-		};
-		2DD093B924B0CC840078C0BD /* UIView */ = {
-			isa = PBXGroup;
-			children = (
-				2D6FA9EA24626A9700978D18 /* KeyBoardUIView.xib */,
-			);
-			name = UIView;
 			sourceTree = "<group>";
 		};
 		2DD093BA24B0CD580078C0BD /* icons */ = {
@@ -489,6 +492,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D0C5A7E25A6EADF0065CB81 /* Extension.swift in Sources */,
 				2D55722224385CB300110747 /* ViewControllerBaseDelegate.swift in Sources */,
 				2D55722C243860D300110747 /* BasePresenter.swift in Sources */,
 				2D55723B243C1ECF00110747 /* CurModel.swift in Sources */,

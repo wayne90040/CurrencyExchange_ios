@@ -9,7 +9,8 @@
 import UIKit
 
 class MainTableViewCell: UITableViewCell {
-
+    static let identifier = "MainTableViewCell"
+    
     @IBOutlet weak var countryImg: UIImageView!
     @IBOutlet weak var countryLbl: UILabel!
     @IBOutlet weak var exchangeLbl: UILabel!
